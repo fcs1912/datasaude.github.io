@@ -5908,6 +5908,32 @@ function graficoLinha(array){
   var chartHours = Chartist.Line('#chartHours', dataSales, optionsSales, responsiveSales);
 }
 
+function graficoPizza(array){
+  var dataPreferences = {
+    series: [
+      [25, 30, 20, 25]
+    ]
+  };
+
+  var optionsPreferences = {
+    donut: true,
+    donutWidth: 40,
+    startAngle: 0,
+    total: 100,
+    showLabel: false,
+    axisX: {
+      showGrid: false
+    }
+  };
+
+  Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
+
+  Chartist.Pie('#chartPreferences', {
+    labels: [''+array[0].percentual+'%', ''+array[1].percentual+'%', ''+array[2].percentual+'%'],
+    series: [array[0].percentual, array[1].percentual, array[2].percentual]
+  });
+}
+
 function carregaEstados() {
   for (let i = 0; i <= 27; i++) {
     let linha = document.createElement('li');
@@ -5958,7 +5984,6 @@ function mudaEstado(id) {
 }
 
 function mudaCidade(nome, id){
-  alert("Olá");
   document.getElementById("select-cidade").innerHTML = nome;
   document.getElementById("a-doenca").setAttribute("data-toggle", "dropdown");
   document.getElementById("li-doenca").classList.remove("li-doenca");
@@ -5971,11 +5996,16 @@ function mudaDoenca(doenca, cidade){
 
   let arrIncidencias = buscarDoencaPorCidade(cidade, doenca);
 
+  let arrOcorrencias = doencasQueMaisOcorremPorCidade(cidade);
+
+  console.log(arrOcorrencias);
+
   document.getElementById("texto-graph").remove();
   document.getElementById("texto-graph2").remove();
   document.getElementById("texto-graph3").remove();
 
   graficoLinha(arrIncidencias);
+  graficoPizza(arrOcorrencias);
 }
 
 window.onload = carregaEstados;
