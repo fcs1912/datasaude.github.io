@@ -5934,20 +5934,47 @@ function graficoPizza(array){
   });
 }
 
-function carregaEstados() {
+function carregarPaginaCompleta(estado, cidade, doenca){
 
-  document.getElementById("select-estado").innerHTML = 'Paraíba';
+  if (!estado){
+    estado = 'Paraíba';
+  }
+
+  if (!cidade){
+    cidade = 'Areia';
+  }
+
+  if (!doenca){
+    doenca = 'Orquite';
+  }
+
+  let estadoId = 0;
+  for (let i = 0; i < 27; i++) {
+    if (estados[i].nome === estado){
+      estadoId = i;
+    }
+  }
+
+  document.getElementById("select-estado").innerHTML = estado;
   carregaCidades(14);
-  document.getElementById("select-cidade").innerHTML = 'Areia';
-  carregaDoencas('Areia');
-  document.getElementById("select-doenca").innerHTML = 'Orquite';
+  document.getElementById("select-cidade").innerHTML = cidade;
+  carregaDoencas(cidade);
+  document.getElementById("select-doenca").innerHTML = doenca;
 
-  let arrIncidencias = buscarDoencaPorCidade('Areia', 'Orquite');
+  let arrIncidencias = buscarDoencaPorCidade(cidade, doenca);
+  let arrOcorrencias = doencasQueMaisOcorremPorCidade(cidade);
 
-  let arrOcorrencias = doencasQueMaisOcorremPorCidade('Areia');
+  console.log(arrIncidencias);
+  console.log(arrOcorrencias);
 
   graficoLinha(arrIncidencias);
   graficoPizza(arrOcorrencias);
+
+  document.getElementById("a-cidade").setAttribute("data-toggle", "dropdown");
+  document.getElementById("a-doenca").setAttribute("data-toggle", "dropdown");
+}
+
+function carregaEstados() {
 
   for (let i = 0; i <= 27; i++) {
     let linha = document.createElement('li');
@@ -5960,6 +5987,7 @@ function carregaEstados() {
 
 //Erro ao clicar na segunda vez no estado;
 function carregaCidades(id){
+
   let arr = [];
 
   for (let j = 0; j < estados[id].cidades.length; j++) {
@@ -5973,10 +6001,18 @@ function carregaCidades(id){
     linha.setAttribute("onclick", "mudaCidade("+"'"+arr[i]+"'"+","+i+")");
     document.getElementById('cidade').appendChild(linha);
   }
+
+  //carregaDoencas(estados[id].cidades[0]);
 }
 
 function carregaDoencas(nome){
   let arr = doencasCidade(nome);
+  //console.log(arr);
+
+  //var myNode = document.getElementById("doenca");
+  //myNode.innerHTML = '';
+  //document.getElementById("select-doenca").innerHTML = arr[0].nome;
+
 
   let arr2 = listaDoencas(arr);
 
@@ -5994,15 +6030,31 @@ function mudaEstado(id) {
   document.getElementById("a-cidade").setAttribute("data-toggle", "dropdown");
   document.getElementById("li-cidade").classList.remove("li-cidade");
 
+  var myNode = document.getElementById("cidade");
+  myNode.innerHTML = '';
+
+  myNode = document.getElementById("doenca");
+  myNode.innerHTML = '';
+
+  document.getElementById("select-doenca").innerHTML = 'Selecione a doença';
+  document.getElementById("select-cidade").innerHTML = 'Selecione a cidade';
+
   carregaCidades(id);
+  
 }
 
 function mudaCidade(nome, id){
+
+  myNode = document.getElementById("doenca");
+  myNode.innerHTML = '';
+  document.getElementById("select-doenca").innerHTML = 'Selecione a doença';
+
   document.getElementById("select-cidade").innerHTML = nome;
   document.getElementById("a-doenca").setAttribute("data-toggle", "dropdown");
   document.getElementById("li-doenca").classList.remove("li-doenca");
 
   carregaDoencas(nome);
+
 }
 
 function mudaDoenca(doenca, cidade){
@@ -6012,14 +6064,15 @@ function mudaDoenca(doenca, cidade){
 
   let arrOcorrencias = doencasQueMaisOcorremPorCidade(cidade);
 
-  console.log(arrOcorrencias);
-
-  document.getElementById("texto-graph").remove();
-  document.getElementById("texto-graph2").remove();
-  document.getElementById("texto-graph3").remove();
+  console.log(arrIncidencias);
 
   graficoLinha(arrIncidencias);
   graficoPizza(arrOcorrencias);
 }
 
-window.onload = carregaEstados;
+function inicializa(){
+  carregarPaginaCompleta(null, null, null);
+  carregaEstados();
+}
+
+window.onload = inicializa;
