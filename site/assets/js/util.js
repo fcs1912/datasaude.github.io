@@ -20,7 +20,21 @@ function buscarDoencaPorCidade(cidade, doenca){
         }
     });
 
-    return doencaSelecionada;
+
+    let qtdeMensal = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    for (var i = 0; i < doencaSelecionada.length; i++){
+        let entrada = doencaSelecionada[i];
+        let data = entrada.DT_INTER;
+
+        var mes = String(data).substring(4, 6);
+        var posicaoMes = mes - 1;
+
+        qtdeMensal[posicaoMes] = qtdeMensal[posicaoMes] + 1;
+
+    }
+
+    return qtdeMensal;
 }
 
 let estados = [{
