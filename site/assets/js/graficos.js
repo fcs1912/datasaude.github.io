@@ -67,7 +67,7 @@ graficos = {
     var chartHours = Chartist.Line('#chartHours', dataSales, optionsSales, responsiveSales);
 
     var data = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
       series: [
         [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
         [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
