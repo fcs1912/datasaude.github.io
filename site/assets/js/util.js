@@ -6028,7 +6028,7 @@ function carregaDoencas(nome){
 function mudaEstado(id) {
   document.getElementById("select-estado").innerHTML = estados[id].nome;
   document.getElementById("a-cidade").setAttribute("data-toggle", "dropdown");
-  document.getElementById("li-cidade").classList.remove("li-cidade");
+  //document.getElementById("li-cidade").classList.remove("li-cidade");
 
   var myNode = document.getElementById("cidade");
   myNode.innerHTML = '';
@@ -6051,7 +6051,7 @@ function mudaCidade(nome, id){
 
   document.getElementById("select-cidade").innerHTML = nome;
   document.getElementById("a-doenca").setAttribute("data-toggle", "dropdown");
-  document.getElementById("li-doenca").classList.remove("li-doenca");
+  //document.getElementById("li-doenca").classList.remove("li-doenca");
 
   carregaDoencas(nome);
 
