@@ -5788,6 +5788,48 @@ function listaDoencas(array){
 
 // OS SELECTS FICARAM FEIOS, CASO QUEIRA ARRUMAR
 
+function graficoLinha(){
+  var dataSales = {
+    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+    series: [
+      [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+    ]
+  };
+
+  var optionsSales = {
+    lineSmooth: false,
+    low: 0,
+    high: 900,
+    chartPadding: 0,
+    showArea: false,
+    height: "250px",
+    axisX: {
+    showGrid: false,
+  },
+  axisY: {
+    showGrid: false,
+  },
+  lineSmooth: Chartist.Interpolation.simple({
+    divisor: 10
+  }),
+    showLine: true,
+    showPoint: true,
+    fullWidth: false
+  };
+
+  var responsiveSales = [
+    ['screen and (max-width: 640px)', {
+      axisX: {
+        labelInterpolationFnc: function (value) {
+          return value[0];
+        }
+      }
+    }]
+  ];
+
+  var chartHours = Chartist.Line('#chartHours', dataSales, optionsSales, responsiveSales);
+}
+
 function carregaEstados() {
   for (let i = 0; i <= 27; i++) {
     let linha = document.createElement('li');
