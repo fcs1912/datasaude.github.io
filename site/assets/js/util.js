@@ -5889,7 +5889,7 @@ function graficoLinha(array){
   var optionsSales = {
     lineSmooth: false,
     low: 0,
-    high: 50,
+    high: 15,
     chartPadding: 0,
     showArea: true,
     height: "250px",
@@ -5941,23 +5941,27 @@ function graficoPizza(array){
   Chartist.Pie('#chartPreferences', dataPreferences, optionsPreferences);
 
   Chartist.Pie('#chartPreferences', {
-    labels: [''+array[0].percentual+'%', ''+array[1].percentual+'%', ''+array[2].percentual+'%'],
+    labels: [''+ parseInt(array[0].percentual) +'%', ''+ parseInt(array[1].percentual)+'%', ''+parseInt(array[2].percentual)+'%'],
     series: [array[0].percentual, array[1].percentual, array[2].percentual]
   });
+
+  document.getElementById('doenca1').innerHTML = array[0].doenca;
+  document.getElementById('doenca2').innerHTML = array[1].doenca;
+  document.getElementById('doenca3').innerHTML = array[2].doenca;
 }
 
 function carregarPaginaCompleta(estado, cidade, doenca){
 
   if (!estado){
-    estado = 'Paraíba';
+    estado = 'Rio Grande do Norte';
   }
 
   if (!cidade){
-    cidade = 'Areia';
+    cidade = 'São José do Campestre';
   }
 
   if (!doenca){
-    doenca = 'Orquite';
+    doenca = 'Cistocele';
   }
 
   let estadoId = 0;
