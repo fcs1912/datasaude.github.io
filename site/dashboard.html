@@ -38,7 +38,7 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
               <li class="dropdown nav-item lista">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                   <span class="no-icon" id="select-estado">Selecione o estado</span>
@@ -49,7 +49,7 @@
             </div>
 
             <!-- OS SELECTS FICARAM DOIDOS, MT DADOS, CASO QUEIRA MELHORAR -->
-            <div class="col-md-4">
+            <div class="col-md-6">
               <li class="dropdown nav-item lista" id="li-cidade">
                 <a href="#" class="dropdown-toggle nav-link" id="a-cidade">
                   <span class="no-icon" id="select-cidade">Selecione a cidade</span>
@@ -59,7 +59,7 @@
               </li>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-12">
               <li class="dropdown nav-item lista" id="li-doenca">
                 <a href="#" class="dropdown-toggle nav-link" id="a-doenca">
                   <span class="no-icon" id="select-doenca">Selecione a doença</span>
@@ -101,6 +101,20 @@
                 </div>
               </div>
             </div>
+
+            <div class="row">
+              <div class="col-md-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Previsão</h4>
+                  <p class="card-category">All products including Taxes</p>
+                </div>
+                <div class="card-body">
+
+                </div>
+              </div>
+              </div>
+            </div>
           </div>
           <div class="col-md-4">
             <div class="card ">
@@ -108,13 +122,13 @@
                 <h4 class="card-title">Doenças mais frequentes</h4>
                 <p class="card-category">Pela cidade selecionada</p>
               </div>
-              <div class="card-body">
+              <div class="card-body" style="margin: 80px">
                 <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
               </div>
               <div class="card-footer ">
                 <div class="legend">
-                  <i class="fa fa-circle text-info"></i><span id="doenca1"></span>
-                  <i class="fa fa-circle text-danger"></i><span id="doenca2"></span>
+                  <i class="fa fa-circle text-info"></i><span id="doenca1" ></span> <br>
+                  <i class="fa fa-circle text-danger"></i><span id="doenca2"></span> <br>
                   <i class="fa fa-circle text-warning"></i><span id="doenca3"></span>
                 </div>
               </div>
