@@ -5935,6 +5935,20 @@ function graficoPizza(array){
 }
 
 function carregaEstados() {
+
+  document.getElementById("select-estado").innerHTML = 'Paraíba';
+  carregaCidades(14);
+  document.getElementById("select-cidade").innerHTML = 'Areia';
+  carregaDoencas('Areia');
+  document.getElementById("select-doenca").innerHTML = 'Orquite';
+
+  let arrIncidencias = buscarDoencaPorCidade('Areia', 'Orquite');
+
+  let arrOcorrencias = doencasQueMaisOcorremPorCidade('Areia');
+
+  graficoLinha(arrIncidencias);
+  graficoPizza(arrOcorrencias);
+
   for (let i = 0; i <= 27; i++) {
     let linha = document.createElement('li');
     linha.innerHTML = estados[i].nome;
