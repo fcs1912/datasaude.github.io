@@ -80,6 +80,7 @@
                 <p class="card-category">Mês e quantidade das ocorrências</p>
               </div>
               <div class="card-body ">
+                <div id="texto-graph" style="text-align: center; color: #1DC7EA">Selecione a doença para mostrar o gráfico</div>
                 <div id="chartHours" class="ct-chart"></div>
               </div>
             </div>
@@ -93,6 +94,7 @@
                 <p class="card-category">All products including Taxes</p>
               </div>
               <div class="card-body ">
+                <div id="texto-graph2" style="text-align: center; color: #1DC7EA">Selecione a doença para mostrar o gráfico</div>
                 <div id="chartActivity" class="ct-chart"></div>
               </div>
               <div class="card-footer ">
@@ -106,10 +108,11 @@
           <div class="col-md-4">
             <div class="card ">
               <div class="card-header ">
-                <h4 class="card-title">Doenças que mais matam</h4>
+                <h4 class="card-title">Doenças mais frequentes</h4>
                 <p class="card-category">Pela cidade selecionada</p>
               </div>
               <div class="card-body">
+                <div id="texto-graph3" style="text-align: center; color: #1DC7EA">Selecione a doença para mostrar o gráfico</div>
                 <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
               </div>
               <div class="card-footer ">
@@ -134,7 +137,6 @@
 <script src="assets/js/core/bootstrap.min.js" type="text/javascript"></script>
 
 <script src="assets/js/plugins/chartist.min.js"></script>
-<script src="assets/js/graficos.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
     graficos.initDashboardPageCharts();

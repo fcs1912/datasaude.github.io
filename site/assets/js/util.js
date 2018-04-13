@@ -5802,20 +5802,20 @@ function listaDoencas(array){
 
 // OS SELECTS FICARAM FEIOS, CASO QUEIRA ARRUMAR
 
-function graficoLinha(){
+function graficoLinha(array){
   var dataSales = {
     labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
     series: [
-      [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
+      array
     ]
   };
 
   var optionsSales = {
     lineSmooth: false,
     low: 0,
-    high: 900,
+    high: 50,
     chartPadding: 0,
-    showArea: false,
+    showArea: true,
     height: "250px",
     axisX: {
     showGrid: false,
@@ -5876,8 +5876,6 @@ function carregaDoencas(nome){
 
   let arr2 = listaDoencas(arr);
 
-  console.log(arr2, arr);
-
   for (let i = 0; i < arr2.length; i++) {
     let linha = document.createElement('li');
     linha.innerHTML = arr2[i];
@@ -5896,6 +5894,7 @@ function mudaEstado(id) {
 }
 
 function mudaCidade(nome, id){
+  alert("Olá");
   document.getElementById("select-cidade").innerHTML = nome;
   document.getElementById("a-doenca").setAttribute("data-toggle", "dropdown");
   document.getElementById("li-doenca").classList.remove("li-doenca");
@@ -5908,7 +5907,11 @@ function mudaDoenca(doenca, cidade){
 
   let arrIncidencias = buscarDoencaPorCidade(cidade, doenca);
 
-  console.log(arrIncidencias);
+  document.getElementById("texto-graph").remove();
+  document.getElementById("texto-graph2").remove();
+  document.getElementById("texto-graph3").remove();
+
+  graficoLinha(arrIncidencias);
 }
 
 window.onload = carregaEstados;
