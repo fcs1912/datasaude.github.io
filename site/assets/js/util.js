@@ -37,6 +37,70 @@ function buscarDoencaPorCidade(cidade, doenca){
     return qtdeMensal;
 }
 
+function doencasQueMaisOcorremPorCidade(cidade){
+  let cidadeArray = doencasCidade(cidade);
+  let doencas = [];
+  cidadeArray.forEach(linha => {
+      doencas.push(linha);
+  });
+
+  let hashMap = [];
+
+  for (var i = 0; i < doencas.length; i++){
+      let entrada = doencas[i];
+      let doenca = entrada.descricao;
+
+      if (hashMap[doenca]){
+          hashMap[doenca] = hashMap[doenca] + 1;
+      } else {
+          hashMap[doenca] = 1;
+      }
+
+  }
+
+  let maiorFrequencia = [
+      { 'pos1': 0, 'doenca': '' },
+      { 'pos2': 0, 'doenca': '' },
+      { 'pos3': 0, 'doenca': '' }
+  ];
+
+  for (var j = 0; j < doencas.length; j++){
+
+      if (hashMap[doencas[j].descricao]){
+
+          if (maiorFrequencia[0]['pos1'] < Number(hashMap[doencas[j].descricao])){
+
+              if (maiorFrequencia[1]['doenca'] !== doencas[j].descricao && maiorFrequencia[2]['doenca'] !== doencas[j].descricao){
+                  maiorFrequencia[0]['pos1'] = hashMap[doencas[j].descricao];
+                  maiorFrequencia[0]['doenca'] = doencas[j].descricao;
+              }
+
+          } else if (maiorFrequencia[1]['pos2'] < Number(hashMap[doencas[j].descricao])){
+
+              if (maiorFrequencia[0]['doenca'] !== doencas[j].descricao && maiorFrequencia[2]['doenca'] !== doencas[j].descricao){
+                  maiorFrequencia[1]['pos2'] = hashMap[doencas[j].descricao];
+                  maiorFrequencia[1]['doenca'] = doencas[j].descricao;
+              }
+          } else if (maiorFrequencia[2]['pos3'] < Number(hashMap[doencas[j].descricao])){
+
+              if (maiorFrequencia[0]['doenca'] !== doencas[j].descricao && maiorFrequencia[1]['doenca'] !== doencas[j].descricao){
+                  maiorFrequencia[2]['pos3'] = hashMap[doencas[j].descricao];
+                  maiorFrequencia[2]['doenca'] = doencas[j].descricao;
+              }
+          }
+      }
+  }
+
+  let percentual = [];
+  let soma = maiorFrequencia[0]['pos1'] + maiorFrequencia[1]['pos2'] + maiorFrequencia[2]['pos3'];
+
+  percentual[0] = { 'percentual': maiorFrequencia[0]['pos1'] / soma * 100, 'doenca': maiorFrequencia[0]['doenca'] };
+  percentual[1] = { 'percentual': maiorFrequencia[1]['pos2'] / soma * 100, 'doenca': maiorFrequencia[1]['doenca'] };
+  percentual[2] = { 'percentual': maiorFrequencia[2]['pos3'] / soma * 100, 'doenca': maiorFrequencia[2]['doenca'] };
+
+  return percentual;
+}
+
 let estados = [{
     "id": 0,
     "sigla": "AC",
