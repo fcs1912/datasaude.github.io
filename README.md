@@ -8,5 +8,5 @@ Ferramenta que analisa dados sobre uma determinada ocorrência do número de doe
 
 > Previsão e Prevenção
 
-Para saber mais [visite a página, datasaúde. ](https://google.com)
+Conheça mais sobre nossa ferramenta [clicando aqui. ](https://google.com)
 
