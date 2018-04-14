@@ -16,8 +16,8 @@ def get_top_n(predictions, n=10):
 
     return top_n
  
-reader = Reader(line_format='user item rating', sep=',', skip_lines=1, rating_scale=(0,40))
-data = Dataset.load_from_file('base1.csv', reader=reader)
+reader = Reader(line_format='user item rating', sep=',', skip_lines=1, rating_scale=(0,55))
+data = Dataset.load_from_file('base2.csv', reader=reader)
 trainset = data.build_full_trainset()
 
 #Train the algoritihm to compute the similarities between users
@@ -34,4 +34,4 @@ top_n = get_top_n(predictions, n=5)
 
 # Print the recommended items for each user
 for uid, user_ratings in top_n.items():
-    print(uid, [iid for (iid, _) in user_ratings])
+    print("{cidade:",uid,",doencas:", [iid for (iid, _) in user_ratings],"},")
